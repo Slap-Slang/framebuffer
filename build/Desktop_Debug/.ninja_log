@@ -1,0 +1,79 @@
+# ninja log v7
+1	106	1792267339897769768	CMakeFiles/framebuffer.dir/main.cpp.o	e1fde062b6ba5dd8
+208	235	1792267871257127627	framebuffer	90658d99b6deaa6c
+4	17	1792268103274109351	build.ninja	23140d722573b7c7
+4	17	1792268103274109351	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/cmake_install.cmake	23140d722573b7c7
+0	4	1792268103263109446	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	211	1792267820840566683	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+4	15	1792267871053129404	CMakeFiles/framebuffer.dir/src/bitmap_cvw.cpp.o	db7a96ba6404d040
+4	208	1792267871053950057	CMakeFiles/framebuffer.dir/src/framebuffer.cpp.o	ea43378f03c5ac63
+4	18	1792268103274109351	build.ninja	23140d722573b7c7
+4	18	1792268103274109351	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/cmake_install.cmake	23140d722573b7c7
+0	4	1792268103277109325	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	208	1792268103281109290	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+208	235	1792268103485107517	framebuffer	90658d99b6deaa6c
+0	4	1792268270280883759	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	168	1792268270284883573	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+168	189	1792268270448875968	framebuffer	90658d99b6deaa6c
+0	3	1792268294311786808	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	167	1792268294315786629	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+167	188	1792268294478779309	framebuffer	90658d99b6deaa6c
+0	5	1792268874524845438	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	176	1792268874529845317	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+176	198	1792268874700841177	framebuffer	90658d99b6deaa6c
+1	5	1792268890277466477	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+1	4	1792268954886959011	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	172	1792268954889958943	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+172	194	1792268955057955116	framebuffer	90658d99b6deaa6c
+0	4	1792269574832024969	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	170	1792269574836024902	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+170	192	1792269575002022099	framebuffer	90658d99b6deaa6c
+0	5	1792269631718072117	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	172	1792269631723072034	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+172	195	1792269631890069258	framebuffer	90658d99b6deaa6c
+0	4	1792269658125634690	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	165	1792269658129634624	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+165	187	1792269658290631966	framebuffer	90658d99b6deaa6c
+1	4	1792269675755344282	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	167	1792269675759344217	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+167	189	1792269675921341554	framebuffer	90658d99b6deaa6c
+0	4	1792270172952539350	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	173	1792270172957539274	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+173	195	1792270173125536727	framebuffer	90658d99b6deaa6c
+1	4	1792270428989323127	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	178	1792270428992323091	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+178	201	1792270429166321019	framebuffer	90658d99b6deaa6c
+0	4	1792270464095902678	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	166	1792270464099902630	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+166	188	1792270464261900678	framebuffer	90658d99b6deaa6c
+0	3	1792270601934208896	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+3	168	1792270601937208857	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+168	192	1792270602102206794	framebuffer	90658d99b6deaa6c
+0	4	1792270650693595527	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	173	1792270650697595477	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+173	196	1792270650866593340	framebuffer	90658d99b6deaa6c
+0	4	1792270720004712837	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	166	1792270720008712786	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+166	187	1792270720170710709	framebuffer	90658d99b6deaa6c
+0	3	1792270804977615533	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	168	1792270804981615480	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+168	189	1792270805145613348	framebuffer	90658d99b6deaa6c
+0	3	1792270884258578797	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	166	1792270884262578744	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+166	188	1792270884424576614	framebuffer	90658d99b6deaa6c
+0	3	1792271018213803705	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+3	174	1792271018216803665	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+174	198	1792271018387801382	framebuffer	90658d99b6deaa6c
+0	3	1792271090830831232	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+3	165	1792271090833831192	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+165	187	1792271090995829016	framebuffer	90658d99b6deaa6c
+0	4	1792271118777455341	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	186	1792271118782455274	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+186	209	1792271118963452837	framebuffer	90658d99b6deaa6c
+0	5	1792271217295123876	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+5	194	1792271217300123809	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+194	217	1792271217489121246	framebuffer	90658d99b6deaa6c
+0	4	1792271265044475356	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
+4	165	1792271265048475301	CMakeFiles/framebuffer.dir/src/main.cpp.o	69928ee9f001c799
+165	186	1792271265209473111	framebuffer	90658d99b6deaa6c
+0	4	1792271300705989804	/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/cmake.verify_globs	36e63d0e401ee290
