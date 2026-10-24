@@ -3,6 +3,7 @@
 // #include "font_aaron_4thd_4x4.h"
 // #include "font_mplus_qub_7x7.h"
 // #include "font_windows_Dina_6x9.h"
+#include "anim2.h"
 #include "font_3x3.h"
 #include "framebuffer.h"
 #include <iostream>
@@ -130,6 +131,8 @@ float x = 0;
 
 Font font(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
 
+Anim2 a2(&fb);
+
 int main() {
   // clear terminal before rendering
   std::cout << "\033[2J\033[H";
@@ -140,6 +143,10 @@ int main() {
   fb.fillBufferRandomGray();
   fb.setFont(&font);
   // fb.turnFill(FillState::OFF);
+
+  a2.init();
+  fb.setFillColour(0xffffffff);
+  fb.setWrapX(true);
 
   //// LOOP ////
   do {
@@ -164,6 +171,8 @@ int main() {
     // paletteMario1[4] += 1;
 
     //// DRAW ////
+    fb.fillBuffer(0xffffffff);
+
     // fb.setStrokeColour(0x00ff00);
     // fb.setFillColour(0xff0000);
     // fb.fillBufferRandomGray();
@@ -184,13 +193,18 @@ int main() {
     // fb.drawRectangle(29, 7, -5, -6);
     // fb.drawBitmap(x, 0, bmPALETTEMario);
     x += 0.001;
-    if (x > fb.getWidth() + 7)
-      x = -9;
+
+    // if (x > fb.getWidth() + 7)
+    //   x = -9;
     fb.drawPaletteBitmap(x, 0, dataPALETTEMario, paletteMario1, 9, 9);
-    fb.fillBuffer(RGBtoHex(255, 255, 255, 100));
+    // fb.fillBuffer(RGBtoHex(255, 255, 255, 100));
 
     // fb.drawText(0, 0, "Charl is hier");
+    fb.setStrokeColour(0xff00ff00);
     fb.drawText(0, 0, "19:42:31");
+
+    fb.setStrokeColour(0xffff00ff);
+    a2.update(x);
 
     printFrameBuffer(fb);
     std::cout << "Press 'ctrl' + 'z' to stop program.\n";
