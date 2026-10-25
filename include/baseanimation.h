@@ -1,6 +1,8 @@
 #include "framebuffer.h"
 #pragma once
 
+namespace framebuffer {
+
 class BaseAnimation {
 protected:
   FrameBuffer* fb;
@@ -25,3 +27,4 @@ public:
 protected:
   virtual void run() = 0;
 };
+} // namespace framebuffer

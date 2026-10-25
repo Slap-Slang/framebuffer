@@ -3,6 +3,3 @@ build/
 
 # QT Creator
 .qtcreator/
-
-# Project password
-project_password.txt

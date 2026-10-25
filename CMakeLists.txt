@@ -1,28 +1,36 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(framebuffer LANGUAGES CXX)
+project(Framebuffer)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples")
 
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
-    src/*.cpp
-    include/*.h
-    fonts/*.h
+set(SOURCES
+    src/bitmap_cvw.cpp
+    src/framebuffer.cpp
 )
 
-add_executable(framebuffer
+add_library(framebuffer_lib
     ${SOURCES}
 )
 
-target_include_directories(framebuffer PRIVATE
+target_include_directories(framebuffer_lib
+    PUBLIC
     include
     fonts
 )
 
-include(GNUInstallDirs)
+add_executable(animation1
+    examples/animation1/main.cpp
+)
 
-install(TARGETS framebuffer
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+target_link_libraries(animation1
+    framebuffer_lib
+)
+
+add_executable(animation2
+    examples/animation2/main.cpp
+)
+
+target_link_libraries(animation2
+    framebuffer_lib
 )

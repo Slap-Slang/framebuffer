@@ -8,6 +8,8 @@
 #include "framebuffer.h"
 #include <iostream>
 
+using namespace framebuffer;
+
 void printFrameBuffer(const FrameBuffer &fb);
 
 const uint16_t FB_WIDTH = 36;
@@ -129,7 +131,7 @@ Bitmap bmPALETTEMario(9, 9, dataPALETTEMario, paletteMario1);
 
 float x = 0;
 
-Font font(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
+framebuffer::Font font(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
 
 Anim2 a2(&fb);
 
@@ -171,7 +173,7 @@ int main() {
     // paletteMario1[4] += 1;
 
     //// DRAW ////
-    fb.fillBuffer(0xffffffff);
+    // fb.fillBuffer(0xffffffff);
 
     // fb.setStrokeColour(0x00ff00);
     // fb.setFillColour(0xff0000);
@@ -196,7 +198,7 @@ int main() {
 
     // if (x > fb.getWidth() + 7)
     //   x = -9;
-    fb.drawPaletteBitmap(x, 0, dataPALETTEMario, paletteMario1, 9, 9);
+    // fb.drawPaletteBitmap(x, 0, dataPALETTEMario, paletteMario1, 9, 9);
     // fb.fillBuffer(RGBtoHex(255, 255, 255, 100));
 
     // fb.drawText(0, 0, "Charl is hier");

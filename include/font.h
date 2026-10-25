@@ -2,7 +2,10 @@
 #include "glyph.h"
 #include <cstdint>
 
-struct Font {
+namespace framebuffer {
+
+struct Font
+{
 public:
     const uint8_t* fontData;
     const Glyph* glyphData;
@@ -19,3 +22,4 @@ public:
     {
     }
 };
+} // namespace framebuffer

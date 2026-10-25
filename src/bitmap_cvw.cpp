@@ -1,5 +1,7 @@
 #include "bitmap_cvw.h"
 
+namespace framebuffer {
+
 Bitmap::Bitmap(uint8_t width, uint8_t height, const uint8_t* data, BitmapType type)
     : width(width)
     , height(height)
@@ -17,3 +19,4 @@ Bitmap::Bitmap(uint8_t width, uint8_t height, const uint8_t* data, const uint8_t
     , palette(palette)
 {
 }
+} // namespace framebuffer

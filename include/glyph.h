@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 
+namespace framebuffer {
+
 struct Glyph {
 public:
     const uint8_t width;
@@ -14,3 +16,4 @@ public:
     {
     }
 };
+} // namespace framebuffer

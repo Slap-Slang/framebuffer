@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 
+namespace framebuffer {
+
 enum BitmapType : uint16_t {
     RGB,
     ARGB,
@@ -30,3 +32,4 @@ public:
     const uint8_t* getPalette() const { return palette; };
     void changePalette(const uint8_t* newPalette) { palette = newPalette; };
 };
+} // namespace framebuffer

@@ -9,6 +9,8 @@
 
 // Colour saved as ARGB
 
+namespace framebuffer {
+
 enum FillState {
   ON,
   OFF,
@@ -16,20 +18,20 @@ enum FillState {
 
 class FrameBuffer {
 private:
-  Font* font;
+    Font *font;
 
-  uint32_t* pixels;
+    uint32_t *pixels;
 
-  uint32_t strokeColour = 0xffffffff;
-  uint32_t fillColour = 0xffffffff;
+    uint32_t strokeColour = 0xffffffff;
+    uint32_t fillColour = 0xffffffff;
 
-  uint16_t width, height;
+    uint16_t width, height;
 
-  uint8_t strokeWidth = 1;
+    uint8_t strokeWidth = 1;
 
-  bool fill = true;
-  bool wrapX = false;
-  bool wrapY = false;
+    bool fill = true;
+    bool wrapX = false;
+    bool wrapY = false;
 
 public:
   FrameBuffer(uint16_t width, uint16_t height);
@@ -126,3 +128,4 @@ public:
 uint32_t RGBtoHex(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 uint32_t RGBtoHex(uint8_t r, uint8_t g, uint8_t b);
 uint32_t GRAYtoHex(uint8_t gray);
+} // namespace framebuffer
