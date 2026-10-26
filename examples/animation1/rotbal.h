@@ -34,15 +34,16 @@ public:
 
 private:
   void run() override {
-    fb->fillBuffer(fb->getFillColour());
+      fb->fillBuffer(0xffffffff);
 
-    fb->drawPixel(x, y, fb->getStrokeColour());
+      fb->drawPixel(x, y, 0xffff0000);
 
-    x += xMod;
+      x += xMod;
 
-    y += yMod;
-    if (y == fb->getHeight() - 1)
-        yMod = -1;
-    else if (y == 0) yMod = 1;
+      y += yMod;
+      if (y == fb->getHeight() - 1)
+          yMod = -1;
+      else if (y == 0)
+          yMod = 1;
   }
 };

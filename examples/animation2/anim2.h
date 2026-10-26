@@ -29,8 +29,8 @@ public:
 
 private:
   void run() override {
-      fb->fillBuffer(fb->getFillColour());
-      // fb->setStrokeColour(0xffff0000);
+      fb->fillBuffer(0xffffffff);
+      fb->setStrokeColour(0xffff0000);
       fb->drawLine(0, row, fb->getWidth(), row);
       row++;
   }

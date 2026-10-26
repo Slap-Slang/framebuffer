@@ -9,11 +9,11 @@ set(SOURCES
     src/framebuffer.cpp
 )
 
-add_library(framebuffer_lib
+add_library(framebuffer
     ${SOURCES}
 )
 
-target_include_directories(framebuffer_lib
+target_include_directories(framebuffer
     PUBLIC
     include
     fonts
@@ -24,7 +24,7 @@ add_executable(animation1
 )
 
 target_link_libraries(animation1
-    framebuffer_lib
+    framebuffer
 )
 
 add_executable(animation2
@@ -32,5 +32,21 @@ add_executable(animation2
 )
 
 target_link_libraries(animation2
-    framebuffer_lib
+    framebuffer
+)
+
+add_executable(animation5
+    examples/animation5/main.cpp
+)
+
+target_link_libraries(animation5
+    framebuffer
+)
+
+add_executable(animation6
+    examples/animation6/main.cpp
+)
+
+target_link_libraries(animation6
+    framebuffer
 )

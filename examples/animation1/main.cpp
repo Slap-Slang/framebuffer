@@ -12,36 +12,24 @@ const uint16_t FB_HEIGHT = 9;
 FrameBuffer fb(FB_WIDTH, FB_HEIGHT);
 
 float x = 0;
-RotBal a2(&fb);
+RotBal a1(&fb);
 
 int main() {
   // clear terminal before rendering
   std::cout << "\033[2J\033[H";
 
   //// SETUP ////
-  fb.setStrokeColour(0xff00ff00);
-  fb.setFillColour(0x00ffffff);
-  fb.fillBufferRandomGray();
-
-  a2.init();
-  fb.setFillColour(0xffffffff);
-  fb.setWrapX(true);
+  a1.init();
 
   //// LOOP ////
   do {
     //// UPDATE ////
+    a1.update(x);
+    x += 0.001;
 
     //// DRAW ////
-    fb.setStrokeColour(0xff00ff00);
-    fb.drawText(0, 0, "19:42:31");
-
-    fb.setStrokeColour(0xffff00ff);
-    a2.update(x);
-
     printFrameBuffer(fb);
     std::cout << "Press 'ctrl' + 'z' to stop program.\n";
-
-    x += 0.001;
 
   } while (true);
 
