@@ -1,7 +1,0 @@
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/framebuffer.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/edit_cache.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/rebuild_cache.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/list_install_components.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/install.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/install/local.dir
-/mnt/HDD 4TB WS/cpp/framebuffer/build/Desktop_Debug/CMakeFiles/install/strip.dir
