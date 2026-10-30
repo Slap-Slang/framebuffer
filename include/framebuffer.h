@@ -34,51 +34,28 @@ private:
     bool wrapY = false;
 
 public:
-  FrameBuffer(uint16_t width, uint16_t height);
-  inline ~FrameBuffer() {
-    delete[] pixels;
-  };
-  inline int16_t XYtoPixel(uint16_t x, uint16_t y) const {
-    return y * width + x;
-  };
+    FrameBuffer() { FrameBuffer(0, 0); }
+    FrameBuffer(uint16_t width, uint16_t height);
+    inline ~FrameBuffer() { delete[] pixels; };
+    inline int16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
 
-  inline uint16_t getWidth() const {
-    return width;
-  };
-  inline uint16_t getHeight() const {
-    return height;
-  };
+    inline uint16_t getWidth() const { return width; };
+    inline uint16_t getHeight() const { return height; };
 
-  inline void setWrapX(bool val) {
-    wrapX = val;
-  };
+    inline void setWrapX(bool val) { wrapX = val; };
 
-  inline void setWrapY(bool val) {
-    wrapY = val;
-  };
+    inline void setWrapY(bool val) { wrapY = val; };
 
-  inline void setStrokeColour(uint32_t newStrokeColour) {
-    strokeColour = newStrokeColour;
-  };
-  inline uint32_t getStrokeColour() const {
-    return strokeColour;
-  };
-  inline void setStrokeWidth(uint8_t newStrokeWidth) {
-    strokeWidth = newStrokeWidth;
-  };
-  inline uint8_t getStrokeWidth() const {
-    return strokeWidth;
-  };
-  inline void setFillColour(uint32_t newFillColour) {
-    fillColour = newFillColour;
-  };
-  inline uint32_t getFillColour() const {
-    return fillColour;
-  };
-  inline void turnFill(FillState f = FillState::ON) {
-    fill = f == FillState::ON ? true : f == FillState::OFF ? false
-                                                           : false;
-  };
+    inline void setStrokeColour(uint32_t newStrokeColour) { strokeColour = newStrokeColour; };
+    inline uint32_t getStrokeColour() const { return strokeColour; };
+    inline void setStrokeWidth(uint8_t newStrokeWidth) { strokeWidth = newStrokeWidth; };
+    inline uint8_t getStrokeWidth() const { return strokeWidth; };
+    inline void setFillColour(uint32_t newFillColour) { fillColour = newFillColour; };
+    inline uint32_t getFillColour() const { return fillColour; };
+    inline void turnFill(FillState f = FillState::ON)
+    {
+        fill = f == FillState::ON ? true : f == FillState::OFF ? false : false;
+    };
 
   inline void setFont(Font* newFont) {
     font = newFont;

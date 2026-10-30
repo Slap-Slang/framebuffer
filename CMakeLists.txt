@@ -19,34 +19,12 @@ target_include_directories(framebuffer
     fonts
 )
 
-add_executable(animation1
-    examples/animation1/main.cpp
-)
+set(examples "basiese_bal" "hor_lyn" "blaai_teks" "flits" "sin_ontploffing" "mario" "alfa_toets")
 
-target_link_libraries(animation1
+foreach(example ${examples})
+    add_executable(${example}
+    examples/${example}/main.cpp)
+    target_link_libraries(${example}
     framebuffer
-)
-
-add_executable(animation2
-    examples/animation2/main.cpp
-)
-
-target_link_libraries(animation2
-    framebuffer
-)
-
-add_executable(animation5
-    examples/animation5/main.cpp
-)
-
-target_link_libraries(animation5
-    framebuffer
-)
-
-add_executable(animation6
-    examples/animation6/main.cpp
-)
-
-target_link_libraries(animation6
-    framebuffer
-)
+    )
+endforeach()

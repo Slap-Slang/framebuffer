@@ -19,6 +19,7 @@ private:
     BitmapType type;
 
 public:
+    Bitmap() = default;
     // RGB, MONO or GRAY
     Bitmap(uint8_t width, uint8_t height, const uint8_t* data, BitmapType type);
     // PALETTE

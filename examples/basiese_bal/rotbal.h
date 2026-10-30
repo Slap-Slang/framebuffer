@@ -21,18 +21,9 @@ public:
     fb->setWrapY(false);
   }
 
-  void onBtnClick() override {
-  }
+  void onBtnTrpClick() { xMod *= -1; }
 
-  void onBtnDblClick() override {
-  }
-
-  void onBtnTrpClick() override {
-    xMod *= -1;
-  }
-
-
-private:
+  private:
   void run() override {
       fb->fillBuffer(0xffffffff);
 

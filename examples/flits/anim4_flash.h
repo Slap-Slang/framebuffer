@@ -1,32 +1,31 @@
 #pragma once
 
-class Anim4Flash : public BaseAnimation {
+#include "baseanimation.h"
+#include "framebuffer.h"
+
+class Anim4Flash : public framebuffer::BaseAnimation
+{
 private:
-  uint8_t curBrightness = 0;
-  uint8_t stepSize = 1;
-  int8_t stepDir = 1;
+    uint8_t curBrightness = 2;
+    uint8_t stepSize = 1;
+    int8_t stepDir = 1;
 
 public:
-  Anim4Flash(FrameBuffer* fb) {
-    this->fb = fb;
-    delayUpdate = 5;
-  }
+    Anim4Flash(framebuffer::FrameBuffer *fb)
+    {
+        this->fb = fb;
+        delayUpdate = 5;
+    }
 
   void init() override {
     fb->setWrapX(false);
     fb->setWrapY(false);
     fb->fillBuffer(0xff000000);
 
-    curBrightness = 0;
+    curBrightness = 2;
   }
 
-  void onBtnClick() {}
-
-  void onBtnDblClick() {}
-
-  void onBtnTrpClick() {}
-
-private:
+  private:
   void run() override {
     uint32_t col = 0xffffffff;
 
@@ -37,10 +36,10 @@ private:
 
     int nextBrightness = curBrightness + (stepSize * stepDir);
 
-    if (nextBrightness > 100 || nextBrightness < 1) {
-      stepDir *= -1;
+    if (nextBrightness >= 100 || nextBrightness <= 2) {
+        stepDir *= -1;
     } else {
-      curBrightness = nextBrightness;
+        curBrightness = nextBrightness;
     }
   }
 };

@@ -1,7 +1,7 @@
-#include "framebuffer.h"
 #pragma once
 
 #include "baseanimation.h"
+#include "framebuffer.h"
 
 class Anim5 : public framebuffer::BaseAnimation
 {
@@ -23,12 +23,6 @@ public:
     fb->setWrapX(false);
     fb->setWrapY(false);
   }
-
-  void onBtnClick() override {}
-
-  void onBtnDblClick() override {}
-
-  void onBtnTrpClick() override{};
 
 private:
   void run() override {
