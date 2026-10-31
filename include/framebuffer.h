@@ -34,10 +34,9 @@ private:
     bool wrapY = false;
 
 public:
-    FrameBuffer() { FrameBuffer(0, 0); }
     FrameBuffer(uint16_t width, uint16_t height);
     inline ~FrameBuffer() { delete[] pixels; };
-    inline int16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
+    inline uint16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
 
     inline uint16_t getWidth() const { return width; };
     inline uint16_t getHeight() const { return height; };
@@ -60,8 +59,8 @@ public:
   inline void setFont(Font* newFont) {
     font = newFont;
   };
-  void drawPixel(uint16_t x, uint16_t y, uint32_t value);
-  void drawPixel(uint16_t index, uint32_t value);
+  void drawPixel(int16_t x, int16_t y, uint32_t colour);
+  void drawPixel(uint16_t index, int32_t colour);
   inline uint32_t getPixel(uint16_t index) const {
     return pixels[index];
   }
@@ -70,10 +69,12 @@ public:
   };
 
   //////////LINES/////////
+  void drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint32_t colour);
   void drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+  void drawVerticalLine(int16_t x1, int16_t y1, int16_t length, uint32_t colour);
   void drawVerticalLine(int16_t x1, int16_t y1, int16_t length);
-  void drawHorizontalLine(int16_t x1, int16_t y1, int16_t length);
   void drawHorizontalLine(int16_t x1, int16_t y1, int16_t length, uint32_t colour);
+  void drawHorizontalLine(int16_t x1, int16_t y1, int16_t length);
   //////////LINES/////////
 
   //////////SHAPES/////////

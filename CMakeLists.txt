@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Framebuffer)
+project(Framebuffer
+    VERSION 0.1.0
+    LANGUAGES CXX
+)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples")
 
@@ -19,7 +22,7 @@ target_include_directories(framebuffer
     fonts
 )
 
-set(examples "basiese_bal" "hor_lyn" "blaai_teks" "flits" "sin_ontploffing" "mario" "alfa_toets")
+set(examples "basiese_bal" "hor_lyn" "blaai_teks" "flits" "sin_ontploffing" "mario" "alfa_toets" "toets")
 
 foreach(example ${examples})
     add_executable(${example}

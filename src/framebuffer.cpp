@@ -12,40 +12,41 @@ FrameBuffer::FrameBuffer(uint16_t width, uint16_t height)
   }
 }
 
-void FrameBuffer::drawPixel(uint16_t x, uint16_t y, uint32_t value) {
-  if (wrapX) {
-    x = abs(x) % width;
-  }
-  if (wrapY) {
-    y = abs(y) % height;
-  }
+void FrameBuffer::drawPixel(int16_t x, int16_t y, uint32_t colour)
+{
+    if (wrapX) {
+        x = abs(x) % width;
+    }
+    if (wrapY) {
+        y = abs(y) % height;
+    }
 
-  if (x < 0 || x >= width || y < 0 || y >= height)
-    return;
+    if (x < 0 || x >= width || y < 0 || y >= height)
+        return;
 
-  drawPixel(XYtoPixel(x, y), value);
+    drawPixel(XYtoPixel(x, y), colour);
 }
 
-void FrameBuffer::drawPixel(uint16_t index, uint32_t value) {
+void FrameBuffer::drawPixel(uint16_t index, int32_t colour)
+{
+    uint8_t alpha = colour >> 24 & 0xff;
+    if (alpha == 255) {
+        pixels[index] = colour;
+        return;
+    } else if (alpha == 0)
+        return;
 
-  uint8_t alpha = value >> 24 & 0xff;
-  if (alpha == 255) {
-    pixels[index] = value;
-    return;
-  } else if (alpha == 0)
-    return;
+    float red = colour >> 16 & 0xff;
+    float green = colour >> 8 & 0xff;
+    float blue = colour & 0xff;
 
-  float red = value >> 16 & 0xff;
-  float green = value >> 8 & 0xff;
-  float blue = value & 0xff;
+    uint32_t curColour = getPixel(index);
+    uint8_t invAlpha = 255 - alpha;
+    uint8_t newRed = ((curColour >> 16 & 0xff) * invAlpha + red * alpha) / 255;
+    uint8_t newGreen = ((curColour >> 8 & 0xff) * invAlpha + green * alpha) / 255;
+    uint8_t newBlue = ((curColour & 0xff) * invAlpha + blue * alpha) / 255;
 
-  uint32_t curColour = getPixel(index);
-  uint8_t invAlpha = 255 - alpha;
-  uint8_t newRed = ((curColour >> 16 & 0xff) * invAlpha + red * alpha) / 255;
-  uint8_t newGreen = ((curColour >> 8 & 0xff) * invAlpha + green * alpha) / 255;
-  uint8_t newBlue = ((curColour & 0xff) * invAlpha + blue * alpha) / 255;
-
-  pixels[index] = RGBtoHex(newRed, newGreen, newBlue);
+    pixels[index] = RGBtoHex(newRed, newGreen, newBlue);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -72,55 +73,78 @@ void FrameBuffer::drawPixel(uint16_t index, uint32_t value) {
 //                     end if
 //                     end while
 
-void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2) {
-  float slope;
-  if (y1 == y2) {
-    slope = 0;
-  } else {
-    slope = (x2 - x1) / (y2 - y1);
-  }
-  float c = y1 - (slope * x1);
+// void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2) {
+//   float slope;
+//   if (y1 == y2) {
+//     slope = 0;
+//   } else {
+//       slope = float(x2 - x1) / float(y2 - y1);
+//   }
+//   float c = y1 - (slope * x1);
 
-  if (x2 < x1)
-    std::swap(x1, x2);
-  if (y2 < y1)
-    std::swap(y1, y2);
+//   if (x2 < x1)
+//     std::swap(x1, x2);
+//   if (y2 < y1)
+//     std::swap(y1, y2);
 
-  for (int16_t x = x1; x <= x2; x++) {
-    float y = slope * x + c;
-    drawPixel(x, y, strokeColour);
-  }
+//   for (int16_t x = x1; x <= x2; x++) {
+//       float y = slope * (float) x + c;
+//       drawPixel(x, y, strokeColour);
+//   }
 
-  for (int16_t y = y1; y <= y2; y++) {
-    float x = (y - c) / slope;
-    drawPixel(x, y, strokeColour);
-  }
+//   for (int16_t y = y1; y <= y2; y++) {
+//       float x = ((float) y - c) / slope;
+//       drawPixel(x, y, strokeColour);
+//   }
+// }
+
+void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint32_t colour)
+{
+    int16_t dx = std::abs(x2 - x1);
+    int16_t dy = std::abs(y2 - y1);
+    int16_t sx = (x1 < x2) ? 1 : -1;
+    int16_t sy = (y1 < y2) ? 1 : -1;
+    int16_t err = dx - dy;
+
+    while (true) {
+        drawPixel(x1, y1, colour);
+
+        if (x1 == x2 && y1 == y2) {
+            break;
+        }
+
+        int16_t e2 = 2 * err;
+        if (e2 > -dy) {
+            err -= dy;
+            x1 += sx;
+        }
+        if (e2 < dx) {
+            err += dx;
+            y1 += sy;
+        }
+    }
 }
 
-void FrameBuffer::drawVerticalLine(int16_t x1, int16_t y1, int16_t length) {
-  if (length < 0) {
-    y1 += length + 1;
-    length *= -1;
-  }
-
-  for (int16_t i = 0; i < length; i++) {
-    // pixels[XYtoPixel(x1, i)] = strokeColour;
-    drawPixel(x1, i + y1, strokeColour);
-  }
+void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2)
+{
+    drawLine(x1, y1, x2, y2, strokeColour);
 }
 
-void FrameBuffer::drawHorizontalLine(int16_t x1, int16_t y1, int16_t length) {
-  // if (length < 0) {
-  //   x1 += length + 1;
-  //   length *= -1;
-  // }
+void FrameBuffer::drawVerticalLine(int16_t x1, int16_t y1, int16_t length, uint32_t colour)
+{
+    if (length < 0) {
+        y1 += length + 1;
+        length *= -1;
+    }
 
-  // for (int16_t i = x1; i < length + x1; i++) {
-  //   // pixels[XYtoPixel(i, y1)] = strokeColour;
-  //   drawPixel(i, y1, strokeColour);
-  // }
+    for (int16_t i = 0; i < length; i++) {
+        drawPixel(x1, i + y1, colour);
+    }
+}
 
-  drawHorizontalLine(x1, y1, length, strokeColour);
+void FrameBuffer::drawVerticalLine(int16_t x1, int16_t y1, int16_t length)
+{
+    drawVerticalLine(x1, y1, length, strokeColour);
 }
 
 void FrameBuffer::drawHorizontalLine(int16_t x1, int16_t y1, int16_t length, uint32_t colour) {
@@ -134,6 +158,10 @@ void FrameBuffer::drawHorizontalLine(int16_t x1, int16_t y1, int16_t length, uin
   }
 }
 
+void FrameBuffer::drawHorizontalLine(int16_t x1, int16_t y1, int16_t length)
+{
+    drawHorizontalLine(x1, y1, length, strokeColour);
+}
 
 //////////LINES/////////
 
@@ -163,44 +191,45 @@ void FrameBuffer::drawRectangle(int16_t x1, int16_t y1, int16_t width, int16_t h
 //////////SHAPES/////////
 
 //////////BITMAPS/////////
-void FrameBuffer::drawBitmap(int16_t x, int16_t y, const Bitmap& bm) {
-  uint8_t bmWidth = bm.getWidth();
-  uint8_t bmHeight = bm.getHeight();
-  const uint8_t* data = bm.getData();
-  BitmapType type = bm.getType();
-  const uint8_t* palette = bm.getPalette();
+void FrameBuffer::drawBitmap(int16_t x, int16_t y, const Bitmap &bm)
+{
+    uint8_t bmWidth = bm.getWidth();
+    uint8_t bmHeight = bm.getHeight();
+    const uint8_t *data = bm.getData();
+    BitmapType type = bm.getType();
+    const uint8_t *palette = bm.getPalette();
 
-  for (uint16_t ybm = 0; ybm < bmHeight; ybm++) {
-    for (uint16_t xbm = 0; xbm < bmWidth; xbm++) {
-      uint16_t index = ybm * bmWidth + xbm;
-      uint32_t colour = 0;
-      switch (type) {
-        case RGB:
-          index *= 3;
-          colour = RGBtoHex(data[index], data[index + 1], data[index + 2]);
-          break;
-        case ARGB:
-          index *= 4;
-          colour = RGBtoHex(data[index + 1], data[index + 2], data[index + 3], data[index]);
-          break;
+    for (uint16_t ybm = 0; ybm < bmHeight; ybm++) {
+        for (uint16_t xbm = 0; xbm < bmWidth; xbm++) {
+            uint16_t index = ybm * bmWidth + xbm;
+            uint32_t colour = 0;
+            switch (type) {
+            case RGB:
+                index *= 3;
+                colour = RGBtoHex(data[index], data[index + 1], data[index + 2]);
+                break;
+            case ARGB:
+                index *= 4;
+                colour = RGBtoHex(data[index + 1], data[index + 2], data[index + 3], data[index]);
+                break;
 
-        case MONO:
-          if (data[index] > 0)
-            colour = strokeColour;
-          break;
+            case MONO:
+                if (data[index] > 0)
+                    colour = strokeColour;
+                break;
 
-        case GRAY:
-          colour = GRAYtoHex(data[index]);
-          break;
+            case GRAY:
+                colour = GRAYtoHex(data[index]);
+                break;
 
-        case PALETTE:
-          uint8_t pi = data[index] * 4;
-          colour = RGBtoHex(palette[pi + 1], palette[pi + 2], palette[pi + 3], palette[pi]);
-          break;
-      }
-      drawPixel(x + xbm, y + ybm, colour);
+            case PALETTE:
+                uint8_t pi = data[index] * 4;
+                colour = RGBtoHex(palette[pi + 1], palette[pi + 2], palette[pi + 3], palette[pi]);
+                break;
+            }
+            drawPixel(x + xbm, y + ybm, colour);
+        }
     }
-  }
 }
 
 void FrameBuffer::drawMonoBitmap(int16_t x, int16_t y, const uint8_t* bitmap, int bmWidth, int bmHeight) {
