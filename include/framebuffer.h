@@ -25,7 +25,7 @@ private:
     uint32_t strokeColour = 0xffffffff;
     uint32_t fillColour = 0xffffffff;
 
-    uint16_t width, height;
+    uint16_t width, height, pixelCount;
 
     uint8_t strokeWidth = 1;
 
@@ -35,7 +35,10 @@ private:
 
 public:
     FrameBuffer(uint16_t width, uint16_t height);
+    FrameBuffer(const FrameBuffer &fb) = delete;
+    FrameBuffer operator=(const FrameBuffer &fb) = delete;
     inline ~FrameBuffer() { delete[] pixels; };
+
     inline uint16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
 
     inline uint16_t getWidth() const { return width; };

@@ -23,6 +23,9 @@ int main()
         fb.setStrokeColour(0xffffff00);
         fb.drawLine(3, 4, 27, 6);
 
+        fb.setStrokeColour(0xffffffff);
+        fb.drawLine(0, 0, 30, 8);
+
         printFrameBuffer(fb);
 
     } while (true);

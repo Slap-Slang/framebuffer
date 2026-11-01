@@ -55,7 +55,7 @@ public:
         delayUpdate = 1;
 
         bm = framebuffer::Bitmap(9, 9, dataPALETTEMario, paletteMario1);
-        f = framebuffer::Font(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
+        f.set(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
     }
 
     void init() override

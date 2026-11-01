@@ -5,11 +5,8 @@ namespace framebuffer {
 
 FrameBuffer::FrameBuffer(uint16_t width, uint16_t height)
   : width(width), height(height) {
-  uint16_t pixelCount = width * height;
-  pixels = new uint32_t[pixelCount];
-  for (uint16_t i = 0; i < pixelCount; i++) {
-    pixels[i] = 0;
-  }
+    pixelCount = width * height;
+    pixels = new uint32_t[pixelCount]{};
 }
 
 void FrameBuffer::drawPixel(int16_t x, int16_t y, uint32_t colour)
@@ -282,8 +279,8 @@ void FrameBuffer::drawText(int16_t x, int16_t y, std::string s) {
     uint16_t nextX = x;
 
     for (uint8_t i = 0; i < s.length(); i++) {
-      g = font->glyphData + (s[i] - font->LOCHAR);
       drawChar(nextX, y, s[i]);
+      g = font->glyphData + (s[i] - font->LOCHAR);
       nextX += g->width + 1;
     }
   }
@@ -292,29 +289,43 @@ void FrameBuffer::drawText(int16_t x, int16_t y, std::string s) {
 
 //////////KAK/////////
 void FrameBuffer::fillBuffer(uint32_t colour) {
-  for (uint16_t y = 0; y < height; y++) {
-    for (uint16_t x = 0; x < width; x++) {
-      drawPixel(x, y, colour);
+    // for (uint16_t y = 0; y < height; y++) {
+    //   for (uint16_t x = 0; x < width; x++) {
+    //     drawPixel(x, y, colour);
+    //   }
+    // }
+
+    for (uint16_t i = 0; i < pixelCount; i++) {
+        drawPixel(i, colour);
     }
-  }
 }
 
 void FrameBuffer::fillBufferRandom() {
-  for (uint16_t y = 0; y < height; y++) {
-    for (uint16_t x = 0; x < width; x++) {
-      uint32_t colour = RGBtoHex(rand(), rand(), rand());
-      drawPixel(x, y, colour);
+    // for (uint16_t y = 0; y < height; y++) {
+    //   for (uint16_t x = 0; x < width; x++) {
+    //     uint32_t colour = RGBtoHex(rand(), rand(), rand());
+    //     drawPixel(x, y, colour);
+    //   }
+    // }
+
+    for (uint16_t i = 0; i < pixelCount; i++) {
+        uint32_t colour = RGBtoHex(rand(), rand(), rand());
+        drawPixel(i, colour);
     }
-  }
 }
 
 void FrameBuffer::fillBufferRandomGray() {
-  for (uint16_t y = 0; y < height; y++) {
-    for (uint16_t x = 0; x < width; x++) {
-      uint8_t shade = rand();
-      drawPixel(x, y, RGBtoHex(shade, shade, shade));
+    // for (uint16_t y = 0; y < height; y++) {
+    //   for (uint16_t x = 0; x < width; x++) {
+    //     uint8_t shade = rand();
+    //     drawPixel(x, y, RGBtoHex(shade, shade, shade));
+    //   }
+    // }
+
+    for (uint16_t i = 0; i < pixelCount; i++) {
+        uint8_t shade = rand();
+        drawPixel(i, RGBtoHex(shade, shade, shade));
     }
-  }
 }
 //////////KAK/////////
 
