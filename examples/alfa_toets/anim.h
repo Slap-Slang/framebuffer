@@ -2,7 +2,7 @@
 
 #include "baseanimation.h"
 #include "font.h"
-// #include "font_aaron_4thd_4x4.h"
+#include "font_aaron_4thd_4x4.h"
 #include "font_mplus_qub_7x7.h"
 #include "framebuffer.h"
 
@@ -44,9 +44,12 @@ private:
 
     framebuffer::Bitmap bm;
 
-    framebuffer::Font f;
+    framebuffer::Font f1;
+    framebuffer::Font f2;
 
     uint8_t pos = 0;
+
+    bool curFont = true;
 
 public:
     Anim(framebuffer::FrameBuffer *fb)
@@ -55,13 +58,23 @@ public:
         delayUpdate = 1;
 
         bm = framebuffer::Bitmap(9, 9, dataPALETTEMario, paletteMario1);
-        f.set(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
+        f1.set(fontAaron4x4::FONT,
+               fontAaron4x4::GLYPHS,
+               fontAaron4x4::LOCHAR,
+               fontAaron4x4::HICHAR,
+               fontAaron4x4::AVHEIGHT);
+
+        f2.set(fontMplus7x7::FONT,
+               fontMplus7x7::GLYPHS,
+               fontMplus7x7::LOCHAR,
+               fontMplus7x7::HICHAR,
+               fontMplus7x7::AVHEIGHT);
     }
 
     void init() override
     {
         fb->setWrapX(true);
-        fb->setFont(&f);
+        fb->setFont(&f1);
     }
 
 private:
@@ -69,6 +82,10 @@ private:
     {
         fb->fillBuffer(0xff000000);
 
+        if (pos % fb->getWidth() == 0) {
+            curFont = !curFont;
+            fb->setFont(curFont ? &f1 : &f2);
+        }
         fb->setStrokeColour(0xff0000ff);
         fb->drawText(0, 2, "Charl Was Hier!");
 

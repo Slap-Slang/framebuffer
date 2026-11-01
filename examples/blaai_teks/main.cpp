@@ -11,7 +11,8 @@ const uint16_t FB_WIDTH = 31;
 const uint16_t FB_HEIGHT = 17;
 
 FrameBuffer fb(FB_WIDTH, FB_HEIGHT);
-framebuffer::Font f(FONT, GLYPHS, LOCHAR, HICHAR, AVHEIGHT);
+framebuffer::Font f(
+    font3x3::FONT, font3x3::GLYPHS, font3x3::LOCHAR, font3x3::HICHAR, font3x3::AVHEIGHT);
 
 float x = 0;
 Anim3Clock a3(&fb);

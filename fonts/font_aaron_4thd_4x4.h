@@ -2,9 +2,11 @@
 
 #include "glyph.h"
 
-#define LOCHAR 32
-#define HICHAR 127
-#define AVHEIGHT 4
+namespace fontAaron4x4 {
+
+const uint8_t LOCHAR = 32;
+const uint8_t HICHAR = 127;
+const uint8_t AVHEIGHT = 4;
 const uint8_t FONT[]
     = {0x00, 0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x02, 0x05, 0x05, 0x00, 0x00, 0x06, 0x0F, 0x0F,
        0x06, 0x02, 0x07, 0x07, 0x02, 0x09, 0x04, 0x02, 0x09, 0x03, 0x0D, 0x07, 0x0B, 0x04, 0x02,
@@ -48,3 +50,4 @@ const framebuffer::Glyph GLYPHS[]
        {3, 4, 0}, {3, 4, 0}, {3, 4, 0}, {3, 4, 0}, {3, 4, 0}, {3, 4, 0}, {3, 4, 0}
 
 };
+} // namespace fontAaron4x4
