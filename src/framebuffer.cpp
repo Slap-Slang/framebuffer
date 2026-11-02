@@ -12,10 +12,10 @@ FrameBuffer::FrameBuffer(uint16_t width, uint16_t height)
 void FrameBuffer::drawPixel(int16_t x, int16_t y, uint32_t colour)
 {
     if (wrapX) {
-        x = abs(x) % width;
+        x = ((x % width) + width) % width;
     }
     if (wrapY) {
-        y = abs(y) % height;
+        y = ((y % height) + height) % height;
     }
 
     if (x < 0 || x >= width || y < 0 || y >= height)
@@ -24,7 +24,7 @@ void FrameBuffer::drawPixel(int16_t x, int16_t y, uint32_t colour)
     drawPixel(XYtoPixel(x, y), colour);
 }
 
-void FrameBuffer::drawPixel(uint16_t index, int32_t colour)
+void FrameBuffer::drawPixel(uint16_t index, uint32_t colour)
 {
     uint8_t alpha = colour >> 24 & 0xff;
     if (alpha == 255) {
@@ -48,53 +48,6 @@ void FrameBuffer::drawPixel(uint16_t index, int32_t colour)
 
 ////////////////////////////////////////////////////////////////////////////////////
 //////////LINES/////////
-// plotLine(x0, y0, x1, y1)
-// dx = abs(x1 - x0)
-// sx = x0 < x1 ? 1 : -1
-// dy = -abs(y1 - y0)
-// sy = y0 < y1 ? 1 : -1
-// error = dx + dy
-//
-// while true
-//     plot(x0, y0)
-//     e2 = 2 * error
-//     if e2 >= dy
-//         if x0 == x1 break
-//             error = error + dy
-//             x0 = x0 + sx
-//             end if
-//             if e2 <= dx
-//                 if y0 == y1 break
-//                     error = error + dx
-//                     y0 = y0 + sy
-//                     end if
-//                     end while
-
-// void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2) {
-//   float slope;
-//   if (y1 == y2) {
-//     slope = 0;
-//   } else {
-//       slope = float(x2 - x1) / float(y2 - y1);
-//   }
-//   float c = y1 - (slope * x1);
-
-//   if (x2 < x1)
-//     std::swap(x1, x2);
-//   if (y2 < y1)
-//     std::swap(y1, y2);
-
-//   for (int16_t x = x1; x <= x2; x++) {
-//       float y = slope * (float) x + c;
-//       drawPixel(x, y, strokeColour);
-//   }
-
-//   for (int16_t y = y1; y <= y2; y++) {
-//       float x = ((float) y - c) / slope;
-//       drawPixel(x, y, strokeColour);
-//   }
-// }
-
 void FrameBuffer::drawLine(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint32_t colour)
 {
     int16_t dx = std::abs(x2 - x1);
@@ -278,10 +231,10 @@ void FrameBuffer::drawText(int16_t x, int16_t y, std::string s) {
     const Glyph* g;
     uint16_t nextX = x;
 
-    for (uint8_t i = 0; i < s.length(); i++) {
-      drawChar(nextX, y, s[i]);
-      g = font->glyphData + (s[i] - font->LOCHAR);
-      nextX += g->width + 1;
+    for (uint16_t i = 0; i < s.length(); i++) {
+        drawChar(nextX, y, s[i]);
+        g = font->glyphData + (s[i] - font->LOCHAR);
+        nextX += g->width + 1;
     }
   }
 }
@@ -289,25 +242,12 @@ void FrameBuffer::drawText(int16_t x, int16_t y, std::string s) {
 
 //////////KAK/////////
 void FrameBuffer::fillBuffer(uint32_t colour) {
-    // for (uint16_t y = 0; y < height; y++) {
-    //   for (uint16_t x = 0; x < width; x++) {
-    //     drawPixel(x, y, colour);
-    //   }
-    // }
-
     for (uint16_t i = 0; i < pixelCount; i++) {
         drawPixel(i, colour);
     }
 }
 
 void FrameBuffer::fillBufferRandom() {
-    // for (uint16_t y = 0; y < height; y++) {
-    //   for (uint16_t x = 0; x < width; x++) {
-    //     uint32_t colour = RGBtoHex(rand(), rand(), rand());
-    //     drawPixel(x, y, colour);
-    //   }
-    // }
-
     for (uint16_t i = 0; i < pixelCount; i++) {
         uint32_t colour = RGBtoHex(rand(), rand(), rand());
         drawPixel(i, colour);
@@ -315,13 +255,6 @@ void FrameBuffer::fillBufferRandom() {
 }
 
 void FrameBuffer::fillBufferRandomGray() {
-    // for (uint16_t y = 0; y < height; y++) {
-    //   for (uint16_t x = 0; x < width; x++) {
-    //     uint8_t shade = rand();
-    //     drawPixel(x, y, RGBtoHex(shade, shade, shade));
-    //   }
-    // }
-
     for (uint16_t i = 0; i < pixelCount; i++) {
         uint8_t shade = rand();
         drawPixel(i, RGBtoHex(shade, shade, shade));

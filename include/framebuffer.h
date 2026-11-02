@@ -18,9 +18,9 @@ enum FillState {
 
 class FrameBuffer {
 private:
-    Font *font;
+    const Font *font = nullptr;
 
-    uint32_t *pixels;
+    uint32_t *pixels = nullptr;
 
     uint32_t strokeColour = 0xffffffff;
     uint32_t fillColour = 0xffffffff;
@@ -36,7 +36,7 @@ private:
 public:
     FrameBuffer(uint16_t width, uint16_t height);
     FrameBuffer(const FrameBuffer &fb) = delete;
-    FrameBuffer operator=(const FrameBuffer &fb) = delete;
+    FrameBuffer &operator=(const FrameBuffer &fb) = delete;
     inline ~FrameBuffer() { delete[] pixels; };
 
     inline uint16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
@@ -63,7 +63,7 @@ public:
     font = newFont;
   };
   void drawPixel(int16_t x, int16_t y, uint32_t colour);
-  void drawPixel(uint16_t index, int32_t colour);
+  void drawPixel(uint16_t index, uint32_t colour);
   inline uint32_t getPixel(uint16_t index) const {
     return pixels[index];
   }

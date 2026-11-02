@@ -7,8 +7,8 @@ namespace framebuffer {
 struct Font
 {
 public:
-    const uint8_t* fontData;
-    const Glyph* glyphData;
+    const uint8_t *fontData = nullptr;
+    const Glyph *glyphData = nullptr;
     uint8_t LOCHAR, HICHAR, AVHEIGHT;
 
     Font() = default;

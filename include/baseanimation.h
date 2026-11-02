@@ -5,7 +5,7 @@ namespace framebuffer {
 
 class BaseAnimation {
 protected:
-    FrameBuffer *fb;
+    FrameBuffer *fb = nullptr;
     uint64_t lastUpdate = 0;
     uint64_t delayUpdate = 20;
 

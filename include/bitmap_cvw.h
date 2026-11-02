@@ -13,8 +13,8 @@ enum BitmapType : uint16_t {
 
 class Bitmap {
 private:
-    const uint8_t* data;
-    const uint8_t* palette;
+    const uint8_t *data = nullptr;
+    const uint8_t *palette = nullptr;
     uint8_t width, height;
     BitmapType type;
 
