@@ -4,7 +4,6 @@
 #include "font.h"
 #include <cmath>
 #include <cstdint>
-#include <iostream>
 #include <string>
 
 // Colour saved as ARGB

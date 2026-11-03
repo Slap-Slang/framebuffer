@@ -1,4 +1,4 @@
-#include "framebuffer.h"
+#include "framebuffer/framebuffer.h"
 #include "rotbal.h"
 #include <iostream>
 

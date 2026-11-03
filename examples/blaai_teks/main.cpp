@@ -1,6 +1,6 @@
 #include "anim3_clock.h"
-#include "font_3x3.h"
-#include "framebuffer.h"
+#include "fonts/font_3x3.h"
+#include "framebuffer/framebuffer.h"
 #include <iostream>
 
 using namespace framebuffer;

@@ -1,5 +1,4 @@
-#include "bitmap_cvw.h"
-#include "framebuffer.h"
+#include "framebuffer/framebuffer.h"
 #include <iostream>
 
 using namespace framebuffer;

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "baseanimation.h"
-#include "framebuffer.h"
+#include "extras/baseanimation.h"
+#include "framebuffer/framebuffer.h"
 
 class Anim3Clock : public framebuffer::BaseAnimation
 {

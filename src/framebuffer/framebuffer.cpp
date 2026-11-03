@@ -1,5 +1,4 @@
-
-#include "framebuffer.h"
+#include "framebuffer/framebuffer.h"
 
 namespace framebuffer {
 

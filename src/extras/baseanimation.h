@@ -1,4 +1,4 @@
-#include "framebuffer.h"
+#include "framebuffer/framebuffer.h"
 #pragma once
 
 namespace framebuffer {

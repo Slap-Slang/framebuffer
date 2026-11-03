@@ -1,5 +1,5 @@
 #include "anim2.h"
-#include "framebuffer.h"
+#include "framebuffer/framebuffer.h"
 #include <iostream>
 
 using namespace framebuffer;
