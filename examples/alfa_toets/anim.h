@@ -1,10 +1,10 @@
 #pragma once
 
 #include "extras/baseanimation.h"
+#include "font.h"
 #include "fonts/font_aaron_4thd_4x4.h"
 #include "fonts/font_mplus_qub_7x7.h"
-#include "framebuffer/font.h"
-#include "framebuffer/framebuffer.h"
+#include "framebuffer.h"
 
 class Anim : public framebuffer::BaseAnimation
 {

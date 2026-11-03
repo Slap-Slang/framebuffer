@@ -1,5 +1,5 @@
 #include "anim4_flash.h"
-#include "framebuffer/framebuffer.h"
+#include "framebuffer.h"
 #include <iostream>
 
 using namespace framebuffer;

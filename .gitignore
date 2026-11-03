@@ -3,3 +3,6 @@ build/
 
 # QT Creator
 .qtcreator/
+
+pixel-icons-main/
+examples/main.cpp

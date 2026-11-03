@@ -1,6 +1,6 @@
 #pragma once
 
-#include "framebuffer/glyph.h"
+#include "glyph.h"
 
 namespace font3x3 {
 

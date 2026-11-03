@@ -8,8 +8,8 @@ project(Framebuffer
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/examples")
 
 set(SOURCES
-    src/framebuffer/bitmap_cvw.cpp
-    src/framebuffer/framebuffer.cpp
+    src/bitmap_cvw.cpp
+    src/framebuffer.cpp
 )
 
 add_library(framebuffer

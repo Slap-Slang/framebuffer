@@ -1,4 +1,4 @@
-#include "framebuffer/bitmap_cvw.h"
+#include "bitmap_cvw.h"
 
 namespace framebuffer {
 

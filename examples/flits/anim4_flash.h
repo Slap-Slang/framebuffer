@@ -1,7 +1,7 @@
 #pragma once
 
 #include "extras/baseanimation.h"
-#include "framebuffer/framebuffer.h"
+#include "framebuffer.h"
 
 class Anim4Flash : public framebuffer::BaseAnimation
 {

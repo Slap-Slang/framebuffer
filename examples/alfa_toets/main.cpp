@@ -1,5 +1,5 @@
 #include "anim.h"
-#include "framebuffer/framebuffer.h"
+#include "framebuffer.h"
 #include <iostream>
 
 void printFrameBuffer(const framebuffer::FrameBuffer &fb);
