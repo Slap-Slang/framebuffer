@@ -2,10 +2,14 @@
 
 namespace framebuffer {
 
-FrameBuffer::FrameBuffer(uint16_t width, uint16_t height)
-  : width(width), height(height) {
-    pixelCount = width * height;
-    pixels = new uint32_t[pixelCount]{};
+FrameBuffer::FrameBuffer(uint16_t width, uint16_t height, uint32_t *pixels)
+    : width(width)
+    , height(height)
+    , pixelCount(width * height)
+    , pixels(pixels)
+{
+    // pixelCount = width * height;
+    // pixels = new uint32_t[pixelCount]{};
 }
 
 void FrameBuffer::drawPixel(int16_t x, int16_t y, uint32_t colour)

@@ -26,6 +26,7 @@ target_include_directories(framebuffer
 target_compile_features(framebuffer PUBLIC cxx_std_20)
 
 set(examples "basiese_bal" "hor_lyn" "blaai_teks" "flits" "sin_ontploffing" "mario" "alfa_toets" "toets")
+# set(examples "basiese_bal")
 
 foreach(example ${examples})
     add_executable(${example}

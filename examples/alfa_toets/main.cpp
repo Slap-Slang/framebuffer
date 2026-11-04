@@ -2,13 +2,17 @@
 #include "framebuffer.h"
 #include <iostream>
 
-void printFrameBuffer(const framebuffer::FrameBuffer &fb);
+namespace fb = framebuffer;
 
-const uint8_t WIDTH = 37;
-const uint8_t HEIGHT = 9;
-framebuffer::FrameBuffer fb(WIDTH, HEIGHT);
+void printFrameBuffer(const fb::FrameBuffer &fb);
 
-Anim a(&fb);
+const uint8_t FB_WIDTH = 37;
+const uint8_t FB_HEIGHT = 9;
+
+uint32_t pixels[FB_WIDTH * FB_HEIGHT];
+fb::FrameBuffer fb1(FB_WIDTH, FB_HEIGHT, pixels);
+
+Anim a(&fb1);
 float count = 0;
 
 int main()
@@ -22,14 +26,14 @@ int main()
     do {
         //// UPDATE ////
         if (a.update(count)) {
-            fb.setStrokeColour(0x1000ff00);
-            fb.drawHorizontalLine(4, 2, 29);
+            fb1.setStrokeColour(0x1000ff00);
+            fb1.drawHorizontalLine(4, 2, 29);
         }
 
         count += 0.001;
 
         //// DRAW ////
-        printFrameBuffer(fb);
+        printFrameBuffer(fb1);
         std::cout << "Press 'ctrl' + 'z' to stop program.\n";
 
     } while (true);

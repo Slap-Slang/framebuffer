@@ -9,7 +9,8 @@ void printFrameBuffer(const FrameBuffer &fb);
 const uint16_t FB_WIDTH = 31;
 const uint16_t FB_HEIGHT = 17;
 
-FrameBuffer fb(FB_WIDTH, FB_HEIGHT);
+uint32_t pixels[FB_WIDTH * FB_HEIGHT];
+FrameBuffer fb(FB_WIDTH, FB_HEIGHT, pixels);
 
 float x = 0;
 Anim5 a5(&fb);

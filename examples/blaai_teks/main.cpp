@@ -10,7 +10,8 @@ void printFrameBuffer(const FrameBuffer &fb);
 const uint16_t FB_WIDTH = 31;
 const uint16_t FB_HEIGHT = 17;
 
-FrameBuffer fb(FB_WIDTH, FB_HEIGHT);
+uint32_t pixels[FB_WIDTH * FB_HEIGHT];
+FrameBuffer fb(FB_WIDTH, FB_HEIGHT, pixels);
 framebuffer::Font f(
     font3x3::FONT, font3x3::GLYPHS, font3x3::LOCHAR, font3x3::HICHAR, font3x3::AVHEIGHT);
 

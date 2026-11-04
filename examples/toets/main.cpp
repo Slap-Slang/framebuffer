@@ -8,7 +8,11 @@ int main()
     // clear terminal before rendering
     std::cout << "\033[2J\033[H";
 
-    framebuffer::FrameBuffer fb(31, 9);
+    const uint16_t FB_WIDTH = 31;
+    const uint16_t FB_HEIGHT = 17;
+
+    uint32_t pixels[FB_WIDTH * FB_HEIGHT];
+    framebuffer::FrameBuffer fb(FB_WIDTH, FB_HEIGHT, pixels);
     fb.fillBufferRandomGray();
 
     do {

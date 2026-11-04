@@ -8,7 +8,8 @@ void printFrameBuffer(const FrameBuffer &fb);
 const uint16_t FB_WIDTH = 36;
 const uint16_t FB_HEIGHT = 9;
 
-FrameBuffer fb(FB_WIDTH, FB_HEIGHT);
+uint32_t pixels[FB_WIDTH * FB_HEIGHT];
+FrameBuffer fb(FB_WIDTH, FB_HEIGHT, pixels);
 
 const uint8_t dataRGBMario[]
     = {0,   0,   0,   0,   0,   0,   0,   0,   0,   255, 0,   0,   255, 0,   0,   255, 0,  0,

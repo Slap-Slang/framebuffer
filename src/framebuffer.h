@@ -33,10 +33,10 @@ private:
     bool wrapY = false;
 
 public:
-    FrameBuffer(uint16_t width, uint16_t height);
+    FrameBuffer(uint16_t width, uint16_t height, uint32_t *pixels);
     FrameBuffer(const FrameBuffer &fb) = delete;
     FrameBuffer &operator=(const FrameBuffer &fb) = delete;
-    inline ~FrameBuffer() { delete[] pixels; };
+    // inline ~FrameBuffer() { delete[] pixels; };
 
     inline uint16_t XYtoPixel(uint16_t x, uint16_t y) const { return y * width + x; };
 
